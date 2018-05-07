@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">EventBusTesting</string>
+    <string name="title_activity_child">ChildActivity</string>
+</resources>
