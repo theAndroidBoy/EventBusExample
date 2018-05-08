@@ -17,9 +17,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ChildActivity"
-            android:label="@string/title_activity_child"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".InterstatialAdActivity"
+            android:label="InterstitialAdActivity" />
     </application>
 
 </manifest>

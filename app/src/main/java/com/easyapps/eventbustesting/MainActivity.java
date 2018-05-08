@@ -6,38 +6,41 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText result;
-    Button launchChildActivity;
+    Button next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        result = findViewById(R.id.result);
-        launchChildActivity = findViewById(R.id.launchChild);
-
-        launchChildActivity.setOnClickListener(new View.OnClickListener() {
+        next = findViewById(R.id.button);
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,
-                        ChildActivity.class);
-                startActivity(intent);
+                Intent i = new Intent(MainActivity.this, InterstatialAdActivity.class);
+                startActivity(i);
             }
         });
 
+        // get event bus object first.
+        // and register this class to listen for events.
         EventBus.getDefault().register(this);
+
     }
+//-----------------------------------
 
     @Subscribe
     public void onEvent(CustomMessageEvent event) {
-        result.setText(event.getCustomMessage());
+        // this method is called when any event occurs
+
+        Log.i("flow", "onEvent: Event occurred ,This onEvent Method is in MainActivity and event occurred in" +
+                "InterstitialAd Activity");
     }
+//-------------------------------------------------------
+
 }
